@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
-import ProducctCard from "./ProductCard";
+import ProductCard from "./ProductCard";
+import './Products.css'
 
 const Products = () => {
   const [data, setData] = useState(null);
   // const [error, setError] = useState(null)
   // const [loading, setLoading] = useState(true);
 
+  
   useEffect(() => {
     // const productData = async () => {
     // try{
@@ -31,10 +33,10 @@ const Products = () => {
     // productData()
   }, []);
   return (
-    <div>
+    <div className="products">
       {data &&
-        data.map((item) => (
-          <ProducctCard key={item.id} title={item.title} price={item.price} image={item.image} description={item.description}/>
+        data.map((item) => (  
+          <ProductCard key={item.id} title={item.title} price={item.price} image={item.image} /*description={item.description}*//>
         ))}
     </div>
   );
