@@ -1,0 +1,9 @@
+.nav{
+    display: flex;
+    justify-content: space-between;
+}
+
+.nav-sub{
+    display: flex;
+    gap: 5rem;
+}
