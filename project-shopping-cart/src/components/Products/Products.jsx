@@ -32,11 +32,17 @@ const Products = () => {
     // }
     // productData()
   }, []);
+    function addToCart(item){
+      let cart = []
+      cart.push(item);
+      console.log(cart)
+      return cart
+    }
   return (
     <div className="products">
       {data &&
         data.map((item) => (  
-          <ProductCard key={item.id} title={item.title} price={item.price} image={item.image} /*description={item.description}*//>
+          <ProductCard key={item.id} title={item.title} price={item.price} image={item.image} onClick={()=> addToCart(item.id)}/>
         ))}
     </div>
   );

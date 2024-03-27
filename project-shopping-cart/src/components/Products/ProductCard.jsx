@@ -25,7 +25,7 @@ export default function ProductCard(props) {
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button size="small" color="primary" >
+        <Button size="small" color="primary"  onClick={props.addToCart}>
           Add to cart
         </Button>
       </CardActions>
