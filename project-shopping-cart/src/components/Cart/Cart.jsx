@@ -1,11 +1,14 @@
-import React from 'react'
+
 
 const Cart = ({ cartLength }) => {
+
   return (
     <div>
-        {cartLength.map((item) => (
+        {/* {cartLength.map((item) => (
             <div key={item.id}>{item.id}</div>
-        ))}
+        ))} */}
+
+        {cartLength}
     </div>
   )
 }

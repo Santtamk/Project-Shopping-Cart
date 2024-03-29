@@ -40,7 +40,7 @@ const Products = ({addToCart}) => {
     <div className="products">
       {data &&
         data.map((item) => (   
-          <ProductCard key={item.id} title={item.title} price={item.price} image={item.image} addToCart={() => addToCart(item.id)}/>
+          <ProductCard key={item.id} title={item.title} price={item.price} image={item.image} addToCart={() => addToCart(item)}/>
         ))}
     </div>
   );

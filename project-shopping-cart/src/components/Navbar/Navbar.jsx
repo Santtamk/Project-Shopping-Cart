@@ -1,14 +1,17 @@
+import { Link } from 'react-router-dom';
 import './Navbar.css';
 
 const Navbar = ({ cartLength }) => {
+  const getCartLinkText = () => {
+    return cartLength.length === 0 ? "Cart" : `Cart (${cartLength.length})`;
+  }
   return (
     <nav className='nav'>
         <div>The Store</div>
         <div className='nav-sub'>
-            <div>Products</div>
-            {(cartLength.length===0) ? 
-            <div>Cart</div> : <div>Cart ({cartLength.length}) </div>
-}
+            <Link to="/products">Products</Link>
+            <Link to="/cart">{getCartLinkText()}</Link>
+            {cartLength}
         </div>
     </nav>
   )
