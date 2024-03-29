@@ -5,6 +5,8 @@ import Typography from '@mui/material/Typography';
 import { Button, CardActionArea, CardActions } from '@mui/material';
 
 export default function ProductCard(props) {
+
+
   // const cart
   return (
     <Card sx={{ maxWidth: 300 }}>
@@ -19,13 +21,10 @@ export default function ProductCard(props) {
           <Typography gutterBottom variant="p" component="div">
           {props.title}
           </Typography>
-          {/* <Typography variant="body2" color="text.secondary">
-            {props.description}
-          </Typography> */}
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button size="small" color="primary"  onClick={props.addToCart}>
+        <Button size="small" color="primary"  onClick={() => props.addToCart(props.id)}>
           Add to cart
         </Button>
       </CardActions>
