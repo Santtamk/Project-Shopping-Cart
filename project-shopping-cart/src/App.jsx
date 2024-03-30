@@ -9,6 +9,7 @@ function App() {
   const [cartLength, setCartLength] = useState([]);
   const addToCart = (item) => {
     setCartLength((prevCart) => [...prevCart, item]);
+    console.log(item)
   };
   // console.log(cartLength)
   return (

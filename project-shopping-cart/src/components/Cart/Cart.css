@@ -1,0 +1,17 @@
+.shoppingCart{
+    width: 750px;
+    height: 423px;
+    
+}
+
+.item{
+    display: flex;
+}
+
+.image{
+    /* all: unset; */
+    /* width: 300px;
+    height: auto;
+    overflow: hidden; */
+    /* object-fit: fill; */
+} 

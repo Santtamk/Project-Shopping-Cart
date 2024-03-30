@@ -21,10 +21,13 @@ export default function ProductCard(props) {
           <Typography gutterBottom variant="p" component="div">
           {props.title}
           </Typography>
+          <Typography gutterBottom variant="p" component="div">
+          ${props.price}
+          </Typography>
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button size="small" color="primary"  onClick={() => props.addToCart(props.id)}>
+        <Button size="small" color="primary"  onClick={() => props.addToCart(props)}>
           Add to cart
         </Button>
       </CardActions>

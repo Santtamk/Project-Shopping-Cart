@@ -11,7 +11,6 @@ const Navbar = ({ cartLength }) => {
         <div className='nav-sub'>
             <Link to="/products">Products</Link>
             <Link to="/cart">{getCartLinkText()}</Link>
-            {cartLength}
         </div>
     </nav>
   )
