@@ -11,6 +11,10 @@ function App() {
     setCartLength((prevCart) => [...prevCart, item]);
     console.log(item)
   };
+  const autoRemoveCartItemOn0 = (id) => {
+    const updatedCart = cartLength.filter((item) => item.id != id)
+    setCartLength(updatedCart);
+  }
   // console.log(cartLength)
   return (
     <>
@@ -22,7 +26,7 @@ function App() {
               path="/products"
               element={<Products addToCart={addToCart} />}
             />
-            <Route path="/cart" element={<Cart cartLength={cartLength} />} />
+            <Route path="/cart" element={<Cart cartLength={cartLength} autoRemoveCartItemOn0={() => autoRemoveCartItemOn0(id)}/>} />
           </Routes>
         </div>
       </BrowserRouter>

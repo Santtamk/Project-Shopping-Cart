@@ -4,12 +4,6 @@ const CartItems = (props) => {
   return (
     <div>
       <div className="item">
-        
-            {/* <div className="buttons">
-                <span className="delete-btn"></span>
-                <span className="like-btn"></span>
-            </div> */}
-
             <div className="image">
                 <img src={props.image} alt={props.title} />
             </div>
@@ -19,16 +13,17 @@ const CartItems = (props) => {
             </div>
 
             <div className="quantity">
-                <button className="plus-btn" type="button" name="button">
-                    <img src="plus.svg" alt="" />
+                <button onClick={()=> props.incrementQuantity()}>
+                    +
                 </button>
-            <input type="text" name="name" value="1" />
-            <button className="minus-btn" type="button" name="button">
-                <img src="minus.svg" alt="" />
+            <input type="text" name="name" value={props.quantity} />
+            <button onClick={()=> props.decrementQuantity()}>
+                -
             </button>
             </div>
 
             <div className="total-price">${props.price}</div>
+            <div className="total-price">Sub Total : ${props.subTotal()}</div>
       </div>
     </div>
   );
