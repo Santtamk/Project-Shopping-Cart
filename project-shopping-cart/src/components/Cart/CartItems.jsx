@@ -17,7 +17,7 @@ const CartItems = (props) => {
                     +
                 </button>
             <input type="text" name="name" value={props.quantity || 1} readOnly/>
-            <button onClick={()=> props.decrementQuantity()}>
+            <button onClick={()=> props.decrementQuantity(props.item)}>
                 -
             </button>
             </div>

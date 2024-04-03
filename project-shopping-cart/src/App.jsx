@@ -11,8 +11,8 @@ function App() {
     setCartLength((prevCart) => [...prevCart, item]);
     console.log(item)
   };
-  const autoRemoveCartItemOn0 = (product) => {
-    const updatedCart = cartLength.filter((item) => item.id != product.id)
+  const autoRemoveCartItemOn0 = (item) => {
+    const updatedCart = cartLength.filter((cartItem) => cartItem.id != item.id)
     setCartLength(updatedCart);
   }
   const updateCartLength = (updatedCart) => {
