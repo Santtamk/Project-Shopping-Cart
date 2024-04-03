@@ -2,26 +2,40 @@ import CartItems from "./CartItems";
 import "./Cart.css";
 import { useState } from "react";
 
-const Cart = ({ cartLength, autoRemoveCartItemOn0 }) => {
+const Cart = ({ cartLength, autoRemoveCartItemOn0, updateCartLength }) => {
   const [quantity, setQuantity] = useState(1);
 
-  const incrementQuantity = () => {
-    setQuantity((prevQuantity) => prevQuantity + 1);
+
+  const incrementQuantity = (item) => {
+
+    const updatedQuantities = { ...quantity };
+    updatedQuantities[item.id] = (updatedQuantities[item.id] || 0) + 1;
+    setQuantity(updatedQuantities);
+    console.log(updatedQuantities)
+
+    const updatedCart = cartLength.map((cartItem) => 
+      cartItem.id === item.id
+        ? { ...cartItem, quantity: updatedQuantities[item.id]}
+        : cartItem
+    );
+    console.log("updatedCart", updatedCart);
+    updateCartLength(updatedCart);
   };
-  const decrementQuantity = () => {
-    if(quantity > 0 ){
+  const decrementQuantity = (item) => {
+    if (quantity > 0) {
       setQuantity((prevQuantity) => prevQuantity - 1);
-    }else{
-      autoRemoveCartItemOn0(id)
+    } else if (quantity < 1) {
+      autoRemoveCartItemOn0(item);
     }
   };
 
   const subTotal = (item) => {
-    return quantity * item.price;
+    console.log('quantity',quantity[item.id] * item.price, 'price')
+    return quantity[item.id] * item.price;
+
   };
 
   const total = cartLength.reduce((acc, item) => acc + subTotal(item), 0);
-  
 
   return (
     <div className="shoppingCart">
@@ -32,16 +46,13 @@ const Cart = ({ cartLength, autoRemoveCartItemOn0 }) => {
           title={item.title}
           price={item.price}
           image={item.image}
-          quantity={quantity}
-          incrementQuantity={incrementQuantity}
-          decrementQuantity={() =>decrementQuantity(item)}
+          quantity={quantity[item.id]}
+          incrementQuantity={() => incrementQuantity(item)}
+          decrementQuantity={() => decrementQuantity(item)}
           subTotal={() => subTotal(item)}
-          autoRemoveCartItemOn0 ={() => autoRemoveCartItemOn0(item)}
         />
       ))}
-      <div>
-        Total : ${total}
-      </div>
+      <div>Total : ${total}</div>
     </div>
   );
 };

@@ -5,7 +5,7 @@ const CartItems = (props) => {
     <div>
       <div className="item">
             <div className="image">
-                <img src={props.image} alt={props.title} />
+                {/* <img src={props.image} alt={props.title} /> */}
             </div>
 
             <div className="description">
@@ -13,10 +13,10 @@ const CartItems = (props) => {
             </div>
 
             <div className="quantity">
-                <button onClick={()=> props.incrementQuantity()}>
+                <button onClick={()=> props.incrementQuantity(props.item)}>
                     +
                 </button>
-            <input type="text" name="name" value={props.quantity} />
+            <input type="text" name="name" value={props.quantity} readOnly/>
             <button onClick={()=> props.decrementQuantity()}>
                 -
             </button>
