@@ -9,7 +9,6 @@ function App() {
   const [cartLength, setCartLength] = useState([]);
   const addToCart = (item) => {
     setCartLength((prevCart) => [...prevCart, item]);
-    console.log(item)
   };
   const autoRemoveCartItemOn0 = (item) => {
     const updatedCart = cartLength.filter((cartItem) => cartItem.id != item.id)
