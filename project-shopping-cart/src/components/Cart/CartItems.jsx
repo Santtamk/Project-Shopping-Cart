@@ -1,4 +1,5 @@
 import "./Cart.css";
+import PropTypes from 'prop-types';
 
 const CartItems = (props) => {
   return (
@@ -18,6 +19,7 @@ const CartItems = (props) => {
             type="text"
             name="name"
             value={props.quantity || 1}
+            readOnly
             // onChange={props.handle}
           />
           <button onClick={() => props.decrementQuantity(props.item)}>-</button>
@@ -32,4 +34,14 @@ const CartItems = (props) => {
   );
 };
 
+CartItems.propTypes = {
+  cartLength: PropTypes.array.isRequired,
+  incrementQuantity: PropTypes.func.isRequired,
+  decrementQuantity: PropTypes.func.isRequired,
+  item: PropTypes.object.isRequired,
+  title: PropTypes.string.isRequired,
+  quantity: PropTypes.number.isRequired,
+  price: PropTypes.number.isRequired,
+  subTotal: PropTypes.func.isRequired,
+};
 export default CartItems;

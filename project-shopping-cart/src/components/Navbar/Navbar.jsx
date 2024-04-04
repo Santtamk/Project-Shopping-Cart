@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom';
 import './Navbar.css';
+import PropTypes from 'prop-types';
+
 
 const Navbar = ({ cartLength }) => {
   const getCartLinkText = () => {
@@ -16,4 +18,7 @@ const Navbar = ({ cartLength }) => {
   )
 }
 
+Navbar.propTypes = {
+  cartLength: PropTypes.array.isRequired,
+}
 export default Navbar

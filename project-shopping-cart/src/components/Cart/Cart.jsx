@@ -2,6 +2,7 @@ import CartItems from "./CartItems";
 import "./Cart.css";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import PropTypes from 'prop-types';
 
 const Cart = ({ cartLength, autoRemoveCartItemOn0, updateCartLength }) => {
   const [quantity, setQuantity] = useState(cartLength.length);
@@ -41,9 +42,7 @@ const Cart = ({ cartLength, autoRemoveCartItemOn0, updateCartLength }) => {
     } else if (quantity[item.id] === 1) {
       autoRemoveCartItemOn0(item);
     }
-    // console.log('updatedQuantities',updatedQuantities)
   };
-  console.log("quantity", quantity);
 
   const subTotal = (item) => {
     return (quantity[item.id] || 1) * item.price;
@@ -66,6 +65,7 @@ const Cart = ({ cartLength, autoRemoveCartItemOn0, updateCartLength }) => {
           title={item.title}
           price={item.price}
           image={item.image}
+          item={item}
           quantity={quantity[item.id]}
           incrementQuantity={() => incrementQuantity(item)}
           decrementQuantity={() => decrementQuantity(item)}
@@ -77,6 +77,12 @@ const Cart = ({ cartLength, autoRemoveCartItemOn0, updateCartLength }) => {
     )}
     </div>
   );
+};
+
+Cart.propTypes = {
+  cartLength: PropTypes.array.isRequired,
+  autoRemoveCartItemOn0: PropTypes.func.isRequired,
+  updateCartLength: PropTypes.func.isRequired,
 };
 
 export default Cart;
